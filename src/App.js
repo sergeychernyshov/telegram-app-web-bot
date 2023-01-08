@@ -21,7 +21,7 @@ function App() {
         <Routes>
             <Route
                 index
-                element={<Form/>}
+                element={<ProductList/>}
             />
             <Route
                 path={'form'}
