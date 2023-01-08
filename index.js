@@ -1,6 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 const token = '5823953700:AAEfiI7UHgKrJgzZm5fCaNatgZTRa5NHX7k'
+const webAppUrl = "https://rococo-tartufo-f41502.netlify.app"
 
 const bot = new TelegramBot(token, {polling: true});
 
@@ -22,7 +23,7 @@ bot.on('message', async (msg) => {
             reply_to_message_id: msg.message_id,
             reply_markup: JSON.stringify({
                 inline_keyboard: [
-                    [{ text: 'Поделится ботом', web_app: {url: 'https://ya.ru/'}}]
+                    [{ text: 'Поделится ботом', web_app: {url: webAppUrl}}]
                 ]
             })});
     }
