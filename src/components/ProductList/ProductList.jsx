@@ -15,7 +15,7 @@ const products = [
 ]
 
 const getTotalPrice = (items = []) => {
-    return items.reduce((acc = 0, item) => {
+    return items.reduce((acc, item) => {
         return acc += item.price
     })
 }
