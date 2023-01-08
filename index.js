@@ -28,4 +28,20 @@ bot.on('message', async (msg) => {
             })});
     }
 
+    if(msg?.web_app_data?.data){
+        try{
+            const data = JSON.parse(msg?.web_app_data?.data)
+
+            await bot.sendMessage(chatId, 'Спасибо!')
+            await bot.sendMessage(chatId,'Страна: '+data?.country)
+            await bot.sendMessage(chatId,'Улица: '+data?.street)
+
+             setTimeout(async () => {
+                 await bot.sendMessage(chatId,'Мы рада, что Вы пользуетесь нашим ботом')
+             },1500)
+        }catch (e){
+            console.log(e)
+        }
+
+    }
 });

@@ -1,13 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css'
 import {useTelegram} from "../../hooks/useTelegram";
+import {TelegramError} from "node-telegram-bot-api/lib/errors";
 const Form = () => {
     const physical = "physical"
+    const mainButtonClicked = "mainButtonClicked"
     const { tg } = useTelegram()
 
     const [country, setCountry] = useState('')
     const [street, setStreet] = useState('')
     const [subjects, setSubject] = useState(physical)
+
+    const onSendData = useCallback(() => {
+        const data = {
+            country,
+            street,
+            subjects
+        }
+        tg.sendData(JSON.stringify(data))
+
+    })
+
+    useEffect(() => {
+        tg.onEvent(mainButtonClicked, onSendData)
+        return () => {
+            tg.offEvent(mainButtonClicked, onSendData)
+        }
+    }, [])
 
     useEffect(() => {
         tg.MainButton.setParams({
