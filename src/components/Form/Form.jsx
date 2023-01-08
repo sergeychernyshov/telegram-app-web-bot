@@ -19,14 +19,14 @@ const Form = () => {
         }
         tg.sendData(JSON.stringify(data))
 
-    })
+    }, [country, street, subjects])
 
     useEffect(() => {
         tg.onEvent(mainButtonClicked, onSendData)
         return () => {
             tg.offEvent(mainButtonClicked, onSendData)
         }
-    }, [])
+    }, [onSendData])
 
     useEffect(() => {
         tg.MainButton.setParams({
