@@ -1,10 +1,11 @@
 import React from 'react';
 import './ProductItem.css'
 import Button from "../Button/Button";
-const ProductItem = (product, className, onAdd) => {
+const ProductItem = ({product, className, onAdd}) => {
     const onAddHandler = () => {
         onAdd(product)
     }
+    console.log("product",product)
     return (
         <div className={"product "+ className}>
             <div className={"img"}></div>
