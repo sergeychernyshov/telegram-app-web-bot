@@ -30,7 +30,7 @@ const Form = () => {
             street:"sdfsfd",
             subject:"sdfsfd"
         }
-        tg.sendData(JSON.stringify(data));
+        tg.sendData(data);
     }
 
     useEffect(() => {
