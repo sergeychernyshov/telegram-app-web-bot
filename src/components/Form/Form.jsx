@@ -25,7 +25,12 @@ const Form = () => {
     }, [onSendData])*/
 
     const sendDataToTelegram = () => {
-        tg.sendData("sdsdfsdf");
+        const data = {
+            country:"sdfsfd",
+            street:"sdfsfd",
+            subject:"sdfsfd"
+        }
+        tg.sendData(JSON.stringify(data));
     }
 
     useEffect(() => {
