@@ -25,7 +25,7 @@ const Form = () => {
     }, [onSendData])*/
 
     const sendDataToTelegram = () => {
-        tg.sendData(selectedRegions);
+        tg.sendData("sdsdfsdf");
     }
 
     useEffect(() => {
