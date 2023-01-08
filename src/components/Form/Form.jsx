@@ -1,44 +1,40 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import './Form.css'
+import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
-import {TelegramError} from "node-telegram-bot-api/lib/errors";
-const Form = () => {
-    const physical = "physical"
-    const mainButtonClicked = "mainButtonClicked"
-    const { tg } = useTelegram()
 
-    const [country, setCountry] = useState('')
-    const [street, setStreet] = useState('')
-    const [subjects, setSubject] = useState(physical)
+const Form = () => {
+    const [country, setCountry] = useState('');
+    const [street, setStreet] = useState('');
+    const [subject, setSubject] = useState('physical');
+    const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
             country,
             street,
-            subjects
+            subject
         }
-        tg.sendData(JSON.stringify(data))
-
-    }, [country, street, subjects])
+        tg.sendData(JSON.stringify(data));
+    }, [country, street, subject])
 
     useEffect(() => {
-        tg.onEvent(mainButtonClicked, onSendData)
+        tg.onEvent('mainButtonClicked', onSendData)
         return () => {
-            tg.offEvent(mainButtonClicked, onSendData)
+            tg.offEvent('mainButtonClicked', onSendData)
         }
     }, [onSendData])
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить'
+            text: 'Отправить данные'
         })
     }, [])
 
     useEffect(() => {
-        if(!street || !country){
-            tg.MainButton.hide()
-        }else{
-            tg.MainButton.show()
+        if(!street || !country) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
         }
     }, [country, street])
 
@@ -56,28 +52,24 @@ const Form = () => {
 
     return (
         <div className={"form"}>
-            <h3>Введите данные</h3>
+            <h3>Введите ваши данные</h3>
             <input
-                className={"input"}
+                className={'input'}
                 type="text"
-                placeholder={"Страна"}
+                placeholder={'Страна'}
                 value={country}
                 onChange={onChangeCountry}
             />
             <input
-                className={"input"}
+                className={'input'}
                 type="text"
-                placeholder={"Улица"}
+                placeholder={'Улица'}
                 value={street}
                 onChange={onChangeStreet}
             />
-            <select
-                className={"select"}
-                value={subjects}
-                onChange={onChangeSubject}
-            >
-                <option value={physical}>Физ. лицо</option>
-                <option value={"legal"}>Юр. лицо</option>
+            <select value={subject} onChange={onChangeSubject} className={'select'}>
+                <option value={'physical'}>Физ. лицо</option>
+                <option value={'legal'}>Юр. лицо</option>
             </select>
         </div>
     );

@@ -19,8 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "nodemon index.js"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -35,10 +34,6 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {
-    "nodemon": "^2.0.20"
-  },
   "author": "sergey_chernyshov_89@mail.ru",
   "license": "ISC"
 }
