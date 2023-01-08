@@ -12,7 +12,7 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, 'Нажмите на кнопку заполинть форму',{
             reply_markup: {
                 keyboard: [
-                    [{text: "Заполнить форму"}]
+                    [{text: "Заполнить форму", web_app: {url: webAppUrl + '/form'}}]
                 ]
             }
         });
