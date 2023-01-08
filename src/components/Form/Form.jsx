@@ -14,7 +14,7 @@ const Form = () => {
             street,
             subject
         }
-        tg.sendData(data);
+        tg.sendData("text");
     }, [country, street, subject])
 
     useEffect(() => {
